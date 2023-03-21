@@ -1,0 +1,34 @@
+{
+    "name": "linkhub/barocert",
+    "description": "Barocert SDK for php7",
+    "version": "1.0.0",
+    "type": "library",
+    "keywords": [
+        "linkhub",
+        "barocert"
+    ],
+    "homepage": "https://www.linkhub.co.kr/",
+    "license": "MIT",
+    "author":[
+      {
+        "name":"Linkhub Corp",
+        "email":"code@linkhubcorp.com",
+        "homepage":"https://github.com/linkhub-sdk/",
+        "role":"Developer"
+      }
+    ],
+    "support": {
+      "email": "code@linkhubcorp.com",
+      "issues": "https://github.com/linkhub-sdk/linkhub.auth.php7/issues",
+      "source": "https://github.com/linkhub-sdk/linkhub.auth.php7"
+    },
+    "require": {
+        "php": ">=7.1.3",
+        "linkhub/linkhub": "1.4.2"
+    },
+    "autoload": {
+      "psr-4": {
+        "Linkhub\\Barocert\\": "src/"
+      }
+    }
+}
