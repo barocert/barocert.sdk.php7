@@ -19,7 +19,7 @@
  * ======================================================================================
  */
 
-namespace linkhub\barocert;
+namespace Linkhub\Barocert;
 
 use Linkhub\Authority;
 use Linkhub\LinkhubException;
@@ -260,7 +260,7 @@ class KakaocertService
  /**
    * 본인인증 요청
    */
-  public function requestIdentity($ClientCode, $RequestIdentity)
+  public function RequestIdentity($ClientCode, $RequestIdentity)
   {
     if (is_null($ClientCode) || empty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
@@ -308,7 +308,7 @@ class KakaocertService
   /**
    * 본인인증 상태확인
    */
-  public function getIdentityStatus($ClientCode, $receiptID)
+  public function GetIdentityStatus($ClientCode, $receiptID)
   {
     if (is_null($ClientCode) || empty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
@@ -339,7 +339,7 @@ class KakaocertService
   /**
    * 본인인증 검증
    */
-  public function verifyIdentity($ClientCode, $receiptID)
+  public function VerifyIdentity($ClientCode, $receiptID)
   {
     if (is_null($ClientCode) || empty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
@@ -421,7 +421,7 @@ class KakaocertService
   /**
    * 전자서명 상태 확인(단건)
    */
-  public function getSignStatus($ClientCode, $receiptID)
+  public function GetSignStatus($ClientCode, $receiptID)
   {
     if (is_null($ClientCode) || empty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
@@ -452,7 +452,7 @@ class KakaocertService
   /**
    * 전자서명 검증(단건)
    */
-  public function verifySign($ClientCode, $receiptID)
+  public function VerifySign($ClientCode, $receiptID)
   {
     if (is_null($ClientCode) || empty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
@@ -483,7 +483,7 @@ class KakaocertService
   /**
    * 전자서명 요청(복수)
    */
-  public function requestMultiSign($ClientCode, $RequestMultiSign)
+  public function RequestMultiSign($ClientCode, $RequestMultiSign)
   {
     if (is_null($ClientCode) || empty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
@@ -536,7 +536,7 @@ class KakaocertService
   /**
    * 전자서명 상태 확인(복수)
    */
-  public function getMultiSignStatus($ClientCode, $receiptID)
+  public function GetMultiSignStatus($ClientCode, $receiptID)
   {
     if (is_null($ClientCode) || empty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
@@ -567,7 +567,7 @@ class KakaocertService
   /**
    * 전자서명 검증(복수)
    */
-  public function verifyMultiSign($ClientCode, $receiptID)
+  public function VerifyMultiSign($ClientCode, $receiptID)
   {
     if (is_null($ClientCode) || empty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
@@ -598,7 +598,7 @@ class KakaocertService
   /**
    * 출금동의 요청
    */
-  public function requestCMS($ClientCode, $RequestCMS)
+  public function RequestCMS($ClientCode, $RequestCMS)
   {
     if (is_null($ClientCode) || empty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
@@ -660,7 +660,7 @@ class KakaocertService
   /**
    * 출금동의 상태 확인
    */
-  public function getCMSStatus($ClientCode, $receiptID)
+  public function GetCMSStatus($ClientCode, $receiptID)
   {
     if (is_null($ClientCode) || empty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
@@ -691,7 +691,7 @@ class KakaocertService
   /**
    * 출금동의 서명 검증
    */
-  public function verifyCMS($ClientCode, $receiptID)
+  public function VerifyCMS($ClientCode, $receiptID)
   {
     if (is_null($ClientCode) || empty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
