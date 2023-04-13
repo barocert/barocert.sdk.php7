@@ -99,7 +99,7 @@ class KakaocertService
 
     if ($Refresh) {
       try {
-        $targetToken = $this->Linkhub->getToken(KakaocertService::ServiceID, $CorpNum, $this->scopes, $this->IPRestrictOnOff ? null : "*", $this->UseStaticIP, $this->UseLocalTimeYN, false);
+        $targetToken = $this->Linkhub->getToken(KakaocertService::ServiceID, "", $this->scopes, $this->IPRestrictOnOff ? null : "*", $this->UseStaticIP, $this->UseLocalTimeYN, false);
       } catch (LinkhubException $le) {
         throw new BarocertException($le->getMessage(), $le->getCode());
       }
@@ -117,7 +117,7 @@ class KakaocertService
       $http = curl_init($targetURL . $uri);
       $header = array();
 
-      $header[] = 'Authorization: Bearer ' . $this->getsession_Token($ClientCode);
+      $header[] = 'Authorization: Bearer ' . $this->getsession_Token($this->Linkhub->getLinkID());
       $header[] = 'Content-Type: Application/json';
 
       if ($isPost) {
@@ -170,7 +170,7 @@ class KakaocertService
 
       $header[] = 'Accept-Encoding: gzip,deflate';
       $header[] = 'Connection: close';
-      $header[] = 'Authorization: Bearer ' . $this->getsession_Token($ClientCode);
+      $header[] = 'Authorization: Bearer ' . $this->getsession_Token($this->Linkhub->getLinkID());
       
 
       $header[] = 'Content-Type: Application/json';
@@ -252,7 +252,7 @@ class KakaocertService
     $biv  = openssl_random_pseudo_bytes(12);
     $ciphertext = openssl_encrypt($data, "aes-256-gcm", base64_decode($this->Linkhub->getSecretKey()), 0, $biv, $tagbt);
   
-    $concatted = $iv.base64_decode($ciphertext).$tagbt;
+    $concatted = $biv.base64_decode($ciphertext).$tagbt;
     return base64_encode($concatted);
   }
 
@@ -265,7 +265,7 @@ class KakaocertService
     if (is_null($ClientCode) || empty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (ereg("[^0-9]", $ClientCode)) {
+    if (preg_match("/^[0-9]*$/", $ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
@@ -313,7 +313,7 @@ class KakaocertService
     if (is_null($ClientCode) || empty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (ereg("[^0-9]", $ClientCode)) {
+    if (preg_match("/^[0-9]*$/", $ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
@@ -322,7 +322,7 @@ class KakaocertService
     if (is_null($receiptID) || empty($receiptID)) {
       throw new BarocertException('접수아이디가 입력되지 않았습니다.');
     }
-    if (ereg("[^0-9]", $receiptID)) {
+    if (preg_match("/^[0-9]*$/",  $receiptID) == 0) {
       throw new BarocertException('접수아이디는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($receiptID) != 32) {
@@ -344,7 +344,7 @@ class KakaocertService
     if (is_null($ClientCode) || empty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (ereg("[^0-9]", $ClientCode)) {
+    if (preg_match("/^[0-9]*$/", $ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
@@ -353,7 +353,7 @@ class KakaocertService
     if (is_null($receiptID) || empty($receiptID)) {
       throw new BarocertException('접수아이디가 입력되지 않았습니다.');
     }
-    if (ereg("[^0-9]", $receiptID)) {
+    if (preg_match("/^[0-9]*$/",  $receiptID) == 0) {
       throw new BarocertException('접수아이디는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($receiptID) != 32) {
@@ -375,7 +375,7 @@ class KakaocertService
     if (is_null($ClientCode) || empty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (ereg("[^0-9]", $ClientCode)) {
+    if (preg_match("/^[0-9]*$/", $ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
@@ -426,7 +426,7 @@ class KakaocertService
     if (is_null($ClientCode) || empty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (ereg("[^0-9]", $ClientCode)) {
+    if (preg_match("/^[0-9]*$/", $ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
@@ -435,7 +435,7 @@ class KakaocertService
     if (is_null($receiptID) || empty($receiptID)) {
       throw new BarocertException('접수아이디가 입력되지 않았습니다.');
     }
-    if (ereg("[^0-9]", $receiptID)) {
+    if (preg_match("/^[0-9]*$/",  $receiptID) == 0) {
       throw new BarocertException('접수아이디는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($receiptID) != 32) {
@@ -457,7 +457,7 @@ class KakaocertService
     if (is_null($ClientCode) || empty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (ereg("[^0-9]", $ClientCode)) {
+    if (preg_match("/^[0-9]*$/", $ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
@@ -466,7 +466,7 @@ class KakaocertService
     if (is_null($receiptID) || empty($receiptID)) {
       throw new BarocertException('접수아이디가 입력되지 않았습니다.');
     }
-    if (ereg("[^0-9]", $receiptID)) {
+    if (preg_match("/^[0-9]*$/",  $receiptID) == 0) {
       throw new BarocertException('접수아이디는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($receiptID) != 32) {
@@ -491,7 +491,7 @@ class KakaocertService
     if (is_null($ClientCode) || empty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (ereg("[^0-9]", $ClientCode)) {
+    if (preg_match("/^[0-9]*$/", $ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
@@ -541,7 +541,7 @@ class KakaocertService
     if (is_null($ClientCode) || empty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (ereg("[^0-9]", $ClientCode)) {
+    if (preg_match("/^[0-9]*$/", $ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
@@ -550,7 +550,7 @@ class KakaocertService
     if (is_null($receiptID) || empty($receiptID)) {
       throw new BarocertException('접수아이디가 입력되지 않았습니다.');
     }
-    if (ereg("[^0-9]", $receiptID)) {
+    if (preg_match("/^[0-9]*$/",  $receiptID) == 0) {
       throw new BarocertException('접수아이디는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($receiptID) != 32) {
@@ -572,7 +572,7 @@ class KakaocertService
     if (is_null($ClientCode) || empty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (ereg("[^0-9]", $ClientCode)) {
+    if (preg_match("/^[0-9]*$/", $ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
@@ -581,7 +581,7 @@ class KakaocertService
     if (is_null($receiptID) || empty($receiptID)) {
       throw new BarocertException('접수아이디가 입력되지 않았습니다.');
     }
-    if (ereg("[^0-9]", $receiptID)) {
+    if (preg_match("/^[0-9]*$/",  $receiptID) == 0) {
       throw new BarocertException('접수아이디는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($receiptID) != 32) {
@@ -603,7 +603,7 @@ class KakaocertService
     if (is_null($ClientCode) || empty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (ereg("[^0-9]", $ClientCode)) {
+    if (preg_match("/^[0-9]*$/", $ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
@@ -665,7 +665,7 @@ class KakaocertService
     if (is_null($ClientCode) || empty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (ereg("[^0-9]", $ClientCode)) {
+    if (preg_match("/^[0-9]*$/", $ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
@@ -674,7 +674,7 @@ class KakaocertService
     if (is_null($receiptID) || empty($receiptID)) {
       throw new BarocertException('접수아이디가 입력되지 않았습니다.');
     }
-    if (ereg("[^0-9]", $receiptID)) {
+    if (preg_match("/^[0-9]*$/",  $receiptID) == 0) {
       throw new BarocertException('접수아이디는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($receiptID) != 32) {
@@ -696,7 +696,7 @@ class KakaocertService
     if (is_null($ClientCode) || empty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (ereg("[^0-9]", $ClientCode)) {
+    if (preg_match("/^[0-9]*$/", $ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
@@ -705,7 +705,7 @@ class KakaocertService
     if (is_null($receiptID) || empty($receiptID)) {
       throw new BarocertException('접수아이디가 입력되지 않았습니다.');
     }
-    if (ereg("[^0-9]", $receiptID)) {
+    if (preg_match("/^[0-9]*$/",  $receiptID) == 0) {
       throw new BarocertException('접수아이디는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($receiptID) != 32) {
@@ -813,12 +813,14 @@ class ResponseVerifyIdentity
   public $receiptID;
   public $state;
   public $signedData;
+  public $ci;
 
   public function fromJsonInfo($jsonInfo)
   {
     isset($jsonInfo->receiptID) ? $this->receiptID = $jsonInfo->receiptID : null;
     isset($jsonInfo->state) ? $this->state = $jsonInfo->state : null;
     isset($jsonInfo->signedData) ? $this->signedData = $jsonInfo->signedData : null;
+    isset($jsonInfo->ci) ? $this->ci = $jsonInfo->ci : null;
   }
 }
 
