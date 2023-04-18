@@ -501,6 +501,9 @@ class KakaocertService
     if (is_null($MultiSign->expireIn) || empty($MultiSign->expireIn)) {
       throw new BarocertException('만료시간이 입력되지 않았습니다.');
     }
+    if (is_null($MultiSign->reqTitle) || empty($MultiSign->reqTitle)) {
+      throw new BarocertException('인증요청 메시지 제목이 입력되지 않았습니다.');
+    }
     if ($this->isNullorEmptyTitle($MultiSign->tokens)) {
       throw new BarocertException('인증요청 메시지 제목이 입력되지 않았습니다.');
     }
