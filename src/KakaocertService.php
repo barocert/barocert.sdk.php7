@@ -10,7 +10,7 @@
  * be installed and enabled.
  *
  * https://www.linkhub.co.kr
- * Author : lsh (dev@linkhubcorp.com)
+ * Author : linkhub dev (dev@linkhubcorp.com)
  * Written : 2023-03-14
  * Updated : 2023-05-08
  *
@@ -500,6 +500,9 @@ class KakaocertService
     }
     if (is_null($MultiSign->expireIn) || empty($MultiSign->expireIn)) {
       throw new BarocertException('만료시간이 입력되지 않았습니다.');
+    }
+    if (is_null($MultiSign->reqTitle) || empty($MultiSign->reqTitle)) {
+      throw new BarocertException('인증요청 메시지 제목이 입력되지 않았습니다.');
     }
     if ($this->isNullorEmptyTitle($MultiSign->tokens)) {
       throw new BarocertException('인증요청 메시지 제목이 입력되지 않았습니다.');
