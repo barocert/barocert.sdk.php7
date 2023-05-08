@@ -12,7 +12,7 @@
  * https://www.linkhub.co.kr
  * Author : lsh (dev@linkhubcorp.com)
  * Written : 2023-03-14
- * Updated : 2023-04-14
+ * Updated : 2023-05-08
  *
  * Thanks for your interest.
  * We welcome any suggestions, feedbacks, blames or anythings.
@@ -730,7 +730,7 @@ class KakaocertService
 
 }
 
-class Identity
+class KakaoIdentity
 {
 	public $receiverHP;
 	public $receiverName;
@@ -743,7 +743,7 @@ class Identity
 	public $appUseYN;
 }
 
-class IdentityReceipt
+class KakaoIdentityReceipt
 {
   public $receiptID;
 	public $scheme;
@@ -755,7 +755,7 @@ class IdentityReceipt
   }
 }
 
-class IdentityStatus
+class KakaoIdentityStatus
 {
   public $receiptID;
   public $clientCode;
@@ -795,7 +795,7 @@ class IdentityStatus
   }
 }
 
-class IdentityResult
+class KakaoIdentityResult
 {
   public $receiptID;
   public $state;
@@ -813,7 +813,7 @@ class IdentityResult
 
 
 
-class Sign
+class KakaoSign
 {
   public $receiverHP;
   public $receiverName;
@@ -827,7 +827,7 @@ class Sign
   public $appUseYN;
 }
 
-class SignReceipt
+class KakaoSignReceipt
 {
   public $receiptID;
   public $scheme;
@@ -840,7 +840,7 @@ class SignReceipt
 }
 
 
-class SignStatus
+class KakaoSignStatus
 {
   public $receiptID;
   public $clientCode;
@@ -882,7 +882,7 @@ class SignStatus
   }
 }
 
-class SignResult
+class KakaoSignResult
 {
   public $receiptID;
 	public $state;
@@ -898,7 +898,7 @@ class SignResult
   }
 }
 
-class MultiSign
+class KakaoMultiSign
 {
   public $receiverHP;
   public $receiverName;
@@ -914,13 +914,13 @@ class MultiSign
   public $appUseYN;
 }
 
-class MultiSignTokens
+class KakaoMultiSignTokens
 {
   public $reqTitle;
   public $token;
 }
 
-class MultiSignReceipt
+class KakaoMultiSignReceipt
 {
   public $receiptID;
   public $scheme;
@@ -932,7 +932,7 @@ class MultiSignReceipt
   }
 }
 
-class MultiSignStatus
+class KakaoMultiSignStatus
 {
   public $receiptID;
   public $clientCode;
@@ -974,7 +974,7 @@ class MultiSignStatus
   }
 }
 
-class MultiSignResult
+class KakaoMultiSignResult
 {
   public $receiptID;
 	public $state;
@@ -991,7 +991,7 @@ class MultiSignResult
   }
 }
 
-class CMS
+class KakaoCMS
 {
 	public $requestID;
 	public $receiverHP;
@@ -1011,7 +1011,7 @@ class CMS
 }
 
 
-class CMSReceipt
+class KakaoCMSReceipt
 {
   public $receiptID;
   public $scheme;
@@ -1023,7 +1023,7 @@ class CMSReceipt
   }
 }
 
-class CMSStatus
+class KakaoCMSStatus
 {
   public $receiptID;
   public $clientCode;
@@ -1065,7 +1065,7 @@ class CMSStatus
   }
 }
 
-class CMSResult
+class KakaoCMSResult
 {
   public $receiptID;
 	public $state;
