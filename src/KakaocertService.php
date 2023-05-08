@@ -287,9 +287,9 @@ class KakaocertService
     
     $result = $this->executeCURL('/KAKAO/Identity/' . $ClientCode, true, $postdata);
 
-    $IdentityReceipt = new IdentityReceipt();
-    $IdentityReceipt->fromJsonInfo($result);
-    return $IdentityReceipt;
+    $KakaoIdentityReceipt = new KakaoIdentityReceipt();
+    $KakaoIdentityReceipt->fromJsonInfo($result);
+    return $KakaoIdentityReceipt;
   }
 
   /**
@@ -318,9 +318,9 @@ class KakaocertService
 
     $result = $this->executeCURL('/KAKAO/Identity/' . $ClientCode .'/'. $receiptID, false, null);
 
-    $IdentityStatus = new IdentityStatus();
-    $IdentityStatus->fromJsonInfo($result);
-    return $IdentityStatus;
+    $KakaoIdentityStatus = new KakaoIdentityStatus();
+    $KakaoIdentityStatus->fromJsonInfo($result);
+    return $KakaoIdentityStatus;
   }
 
   /**
@@ -349,9 +349,9 @@ class KakaocertService
 
     $result = $this->executeCURL('/KAKAO/Identity/' . $ClientCode .'/'. $receiptID, true, null);
 
-    $IdentityResult = new IdentityResult();
-    $IdentityResult->fromJsonInfo($result);
-    return $IdentityResult;
+    $KakaoIdentityResult = new KakaoIdentityResult();
+    $KakaoIdentityResult->fromJsonInfo($result);
+    return $KakaoIdentityResult;
   }
 
   /**
@@ -399,9 +399,9 @@ class KakaocertService
 
     $result = $this->executeCURL('/KAKAO/Sign/' . $ClientCode, true,  $postdata);
 
-    $SignReceipt = new SignReceipt();
-    $SignReceipt->fromJsonInfo($result);
-    return $SignReceipt;
+    $KakaoSignReceipt = new KakaoSignReceipt();
+    $KakaoSignReceipt->fromJsonInfo($result);
+    return $KakaoSignReceipt;
   }
 
 
@@ -431,9 +431,9 @@ class KakaocertService
 
     $result = $this->executeCURL('/KAKAO/Sign/'. $ClientCode .'/'. $receiptID, false, null);
 
-    $SignStatus = new SignStatus();
-    $SignStatus->fromJsonInfo($result);
-    return $SignStatus;
+    $KakaoSignStatus = new KakaoSignStatus();
+    $KakaoSignStatus->fromJsonInfo($result);
+    return $KakaoSignStatus;
   }
 
   /**
@@ -462,9 +462,9 @@ class KakaocertService
     
     $result = $this->executeCURL('/KAKAO/Sign/'. $ClientCode .'/'. $receiptID, true, null);
 
-    $SignResult = new SignResult();
-    $SignResult->fromJsonInfo($result);
-    return $SignResult;
+    $KakaoSignResult = new KakaoSignResult();
+    $KakaoSignResult->fromJsonInfo($result);
+    return $KakaoSignResult;
   }
 
   /**
@@ -518,9 +518,9 @@ class KakaocertService
     $postdata = json_encode($MultiSign);
     $result = $this->executeCURL('/KAKAO/MultiSign/' . $ClientCode, true, $postdata);
 
-    $MultiSignReceipt = new MultiSignReceipt();
-    $MultiSignReceipt->fromJsonInfo($result);
-    return $MultiSignReceipt;
+    $KakaoMultiSignReceipt = new KakaoMultiSignReceipt();
+    $KakaoMultiSignReceipt->fromJsonInfo($result);
+    return $KakaoMultiSignReceipt;
   }
 
   /**
@@ -580,9 +580,9 @@ class KakaocertService
     
     $result = $this->executeCURL('/KAKAO/MultiSign/'. $ClientCode .'/'. $receiptID, true, null);
 
-    $MultiSignResult = new MultiSignResult();
-    $MultiSignResult->fromJsonInfo($result);
-    return $MultiSignResult;
+    $KakaoMultiSignResult = new KakaoMultiSignResult();
+    $KakaoMultiSignResult->fromJsonInfo($result);
+    return $KakaoMultiSignResult;
   }
 
   /**
@@ -642,9 +642,9 @@ class KakaocertService
     
     $result = $this->executeCURL('/KAKAO/CMS/' . $ClientCode, true, $postdata);
 
-    $CMSReceipt = new CMSReceipt();
-    $CMSReceipt->fromJsonInfo($result);
-    return $CMSReceipt;
+    $KakaoCMSReceipt = new KakaoCMSReceipt();
+    $KakaoCMSReceipt->fromJsonInfo($result);
+    return $KakaoCMSReceipt;
   }
 
   /**
@@ -673,9 +673,9 @@ class KakaocertService
 
     $result = $this->executeCURL('/KAKAO/CMS/' . $ClientCode .'/'. $receiptID, false, null);
 
-    $CMSStatus = new CMSStatus();
-    $CMSStatus->fromJsonInfo($result);
-    return $CMSStatus;
+    $KakaoCMSStatus = new KakaoCMSStatus();
+    $KakaoCMSStatus->fromJsonInfo($result);
+    return $KakaoCMSStatus;
   }
 
   /**
@@ -704,9 +704,9 @@ class KakaocertService
 
     $result = $this->executeCURL('/KAKAO/CMS/'. $ClientCode .'/'. $receiptID, true, null);
 
-    $CMSResult = new CMSResult();
-    $CMSResult->fromJsonInfo($result);
-    return $CMSResult;
+    $KakaoCMSResult = new KakaoCMSResult();
+    $KakaoCMSResult->fromJsonInfo($result);
+    return $KakaoCMSResult;
   }
 
   public function isNullorEmptyTitle($multiSignTokens){
