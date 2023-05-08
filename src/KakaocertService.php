@@ -549,9 +549,9 @@ class KakaocertService
 
     $result = $this->executeCURL('/KAKAO/MultiSign/' . $ClientCode .'/'. $receiptID, false , null);
 
-    $MultiSignStatus = new MultiSignStatus();
-    $MultiSignStatus->fromJsonInfo($result);
-    return $MultiSignStatus;
+    $KakaoMultiSignStatus = new KakaoMultiSignStatus();
+    $KakaoMultiSignStatus->fromJsonInfo($result);
+    return $KakaoMultiSignStatus;
   }
 
   /**
