@@ -12,7 +12,7 @@
  * https://www.linkhub.co.kr
  * Author : linkhub dev (dev@linkhubcorp.com)
  * Written : 2023-03-14
- * Updated : 2023-05-08
+ * Updated : 2023-06-13
  *
  * Thanks for your interest.
  * We welcome any suggestions, feedbacks, blames or anythings.
@@ -261,16 +261,14 @@ class KakaocertService
     if (is_null($Identity) || empty($Identity)) {
       throw new BarocertException('본인인증 요청정보가 입력되지 않았습니다.');
     }
-    if (is_null($Identity->ci) || empty($Identity->ci)) {
-      if (is_null($Identity->receiverHP) || empty($Identity->receiverHP)) {
-        throw new BarocertException('수신자 휴대폰번호가 입력되지 않았습니다.');
-      }
-      if (is_null($Identity->receiverName) || empty($Identity->receiverName)) {
-        throw new BarocertException('수신자 성명이 입력되지 않았습니다.');
-      }
-      if (is_null($Identity->receiverBirthday) || empty($Identity->receiverBirthday)) {
-        throw new BarocertException('생년월일이 입력되지 않았습니다.');
-      }
+    if (is_null($Identity->receiverHP) || empty($Identity->receiverHP)) {
+      throw new BarocertException('수신자 휴대폰번호가 입력되지 않았습니다.');
+    }
+    if (is_null($Identity->receiverName) || empty($Identity->receiverName)) {
+      throw new BarocertException('수신자 성명이 입력되지 않았습니다.');
+    }
+    if (is_null($Identity->receiverBirthday) || empty($Identity->receiverBirthday)) {
+      throw new BarocertException('생년월일이 입력되지 않았습니다.');
     }
 
     if (is_null($Identity->expireIn) || empty($Identity->expireIn)) {
@@ -371,16 +369,14 @@ class KakaocertService
     if (is_null($Sign) || empty($Sign)) {
       throw new BarocertException('전자서명 요청정보가 입력되지 않았습니다.');
     }
-    if (is_null($Sign->ci) || empty($Sign->ci)) {
-      if (is_null($Sign->receiverHP) || empty($Sign->receiverHP)) {
-        throw new BarocertException('수신자 휴대폰번호가 입력되지 않았습니다.');
-      }
-      if (is_null($Sign->receiverName) || empty($Sign->receiverName)) {
-        throw new BarocertException('수신자 성명이 입력되지 않았습니다.');
-      }
-      if (is_null($Sign->receiverBirthday) || empty($Sign->receiverBirthday)) {
-        throw new BarocertException('생년월일이 입력되지 않았습니다.');
-      }
+    if (is_null($Sign->receiverHP) || empty($Sign->receiverHP)) {
+      throw new BarocertException('수신자 휴대폰번호가 입력되지 않았습니다.');
+    }
+    if (is_null($Sign->receiverName) || empty($Sign->receiverName)) {
+      throw new BarocertException('수신자 성명이 입력되지 않았습니다.');
+    }
+    if (is_null($Sign->receiverBirthday) || empty($Sign->receiverBirthday)) {
+      throw new BarocertException('생년월일이 입력되지 않았습니다.');
     }
     if (is_null($Sign->expireIn) || empty($Sign->expireIn)) {
       throw new BarocertException('만료시간이 입력되지 않았습니다.');
@@ -487,16 +483,14 @@ class KakaocertService
     if (is_null($MultiSign) || empty($MultiSign)) {
       throw new BarocertException('전자서명 요청정보가 입력되지 않았습니다.');
     }
-    if (is_null($MultiSign->ci) || empty($MultiSign->ci)) {
-      if (is_null($MultiSign->receiverHP) || empty($MultiSign->receiverHP)) {
-        throw new BarocertException('수신자 휴대폰번호가 입력되지 않았습니다.');
-      }
-      if (is_null($MultiSign->receiverName) || empty($MultiSign->receiverName)) {
-        throw new BarocertException('수신자 성명이 입력되지 않았습니다.');
-      }
-      if (is_null($MultiSign->receiverBirthday) || empty($MultiSign->receiverBirthday)) {
-        throw new BarocertException('생년월일이 입력되지 않았습니다.');
-      }
+    if (is_null($MultiSign->receiverHP) || empty($MultiSign->receiverHP)) {
+      throw new BarocertException('수신자 휴대폰번호가 입력되지 않았습니다.');
+    }
+    if (is_null($MultiSign->receiverName) || empty($MultiSign->receiverName)) {
+      throw new BarocertException('수신자 성명이 입력되지 않았습니다.');
+    }
+    if (is_null($MultiSign->receiverBirthday) || empty($MultiSign->receiverBirthday)) {
+      throw new BarocertException('생년월일이 입력되지 않았습니다.');
     }
     if (is_null($MultiSign->expireIn) || empty($MultiSign->expireIn)) {
       throw new BarocertException('만료시간이 입력되지 않았습니다.');
@@ -602,16 +596,14 @@ class KakaocertService
     if (is_null($CMS) || empty($CMS)) {
       throw new BarocertException('자동이체 출금동의 요청정보가 입력되지 않았습니다.');
     }
-    if (is_null($CMS->ci) || empty($CMS->ci)) {
-      if (is_null($CMS->receiverHP) || empty($CMS->receiverHP)) {
-        throw new BarocertException('수신자 휴대폰번호가 입력되지 않았습니다.');
-      }
-      if (is_null($CMS->receiverName) || empty($CMS->receiverName)) {
-        throw new BarocertException('수신자 성명이 입력되지 않았습니다.');
-      }
-      if (is_null($CMS->receiverBirthday) || empty($CMS->receiverBirthday)) {
-        throw new BarocertException('생년월일이 입력되지 않았습니다.');
-      }
+    if (is_null($CMS->receiverHP) || empty($CMS->receiverHP)) {
+      throw new BarocertException('수신자 휴대폰번호가 입력되지 않았습니다.');
+    }
+    if (is_null($CMS->receiverName) || empty($CMS->receiverName)) {
+      throw new BarocertException('수신자 성명이 입력되지 않았습니다.');
+    }
+    if (is_null($CMS->receiverBirthday) || empty($CMS->receiverBirthday)) {
+      throw new BarocertException('생년월일이 입력되지 않았습니다.');
     }
     if (is_null($CMS->expireIn) || empty($CMS->expireIn)) {
       throw new BarocertException('만료시간이 입력되지 않았습니다.');
@@ -738,7 +730,6 @@ class KakaoIdentity
 	public $receiverHP;
 	public $receiverName;
 	public $receiverBirthday;
-	public $ci;	
 	public $reqTitle;
 	public $expireIn;
 	public $token;
@@ -821,7 +812,6 @@ class KakaoSign
   public $receiverHP;
   public $receiverName;
   public $receiverBirthday;
-  public $ci;
   public $reqTitle;
   public $expireIn;
   public $token;
@@ -906,12 +896,9 @@ class KakaoMultiSign
   public $receiverHP;
   public $receiverName;
   public $receiverBirthday;
-  public $ci;
   public $reqTitle;
   public $expireIn;
-
   public $tokens;
-
   public $tokenType;
   public $returnURL;
   public $appUseYN;
@@ -1000,7 +987,6 @@ class KakaoCMS
 	public $receiverHP;
 	public $receiverName;
 	public $receiverBirthday;
-	public $ci;
 	public $reqTitle;
 	public $expireIn;
 	public $returnURL;	
