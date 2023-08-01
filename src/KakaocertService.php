@@ -20,7 +20,9 @@
  * ======================================================================================
  */
 
-require_once 'Base.php';
+namespace Linkhub\Barocert;
+
+require_once 'BaseService.php';
 
 class KakaocertService
 {

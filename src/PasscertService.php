@@ -20,7 +20,9 @@
  * ======================================================================================
  */
 
-require_once 'Base.php';
+namespace Linkhub\Barocert;
+
+require_once 'BaseService.php';
 
 class PasscertService
 {
@@ -816,7 +818,7 @@ class PassCMSReceipt
 
   public function fromJsonInfo($jsonInfo)
   {
-    isset($jsonInfo->receiptId) ? $this->receiptID = $jsonInfo->receiptId : null;
+    isset($jsonInfo->receiptId) ? $this->receiptId = $jsonInfo->receiptId : null;
     isset($jsonInfo->scheme) ? $this->scheme = $jsonInfo->scheme : null;
     isset($jsonInfo->marketUrl) ? $this->marketUrl = $jsonInfo->marketUrl : null;
   }

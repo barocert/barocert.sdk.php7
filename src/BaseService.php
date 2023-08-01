@@ -2,7 +2,7 @@
 
 /**
  * =====================================================================================
- * Class for base module for Kakaocert API SDK. It include base functionality for
+ * Class for base module for Barocert API SDK. It include base functionality for
  * RESTful web service request and parse json result. It uses Linkhub module
  * to accomplish authentication APIs.
  *
@@ -43,7 +43,7 @@ class BaseService
   private $scopes = array();
   private $__requestMode = LINKHUB_COMM_MODE;
 
-  public function __construct($LinkID, $SecretKey)
+  public function __construct($LinkID, $SecretKey, $scope)
   {
     $this->Linkhub = Authority::getInstance($LinkID, $SecretKey);
     $this->scopes[] = 'partner';
@@ -109,7 +109,7 @@ class BaseService
 
     if ($Refresh) {
       try {
-        $targetToken = $this->Linkhub->getToken(KakaocertService::ServiceID, "", $this->scopes, $this->IPRestrictOnOff ? null : "*", $this->UseStaticIP, $this->UseLocalTimeYN, false);
+        $targetToken = $this->Linkhub->getToken(BaseService::ServiceID, "", $this->scopes, $this->IPRestrictOnOff ? null : "*", $this->UseStaticIP, $this->UseLocalTimeYN, false);
       } catch (LinkhubException $le) {
         throw new BarocertException($le->getMessage(), $le->getCode());
       }
@@ -118,7 +118,7 @@ class BaseService
     return $targetToken->session_token;
   }
 
-  protected function executeCURL($uri, $isPost = false, $postdata = null)
+  public function executeCURL($uri, $isPost = false, $postdata = null)
   {
     if ($this->__requestMode != "STREAM") {
 
@@ -237,7 +237,7 @@ class BaseService
     }
   }
 
-  public function encrypt($data){
+  public function encrypt($data, $algorithm){
     if($algorithm === "AES") {
       return $this->encAES256GCM($data);
     }
