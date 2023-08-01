@@ -10,8 +10,8 @@
  * be installed and enabled.
  *
  * https://www.linkhub.co.kr
- * Author : linkhub dev (dev@linkhubcorp.com)
- * Contributor : jws (dev@linkhubcorp.com)
+ * Author : linkhub dev (code@linkhubcorp.com)
+ * Contributor : jws (code@linkhubcorp.com)
  * Written : 2023-03-14
  * Updated : 2023-07-26
  *
@@ -30,7 +30,7 @@ class BaseService
   const ServiceID = 'BAROCERT';
   const ServiceURL = 'https://barocert.linkhub.co.kr';
   const ServiceURL_Static = 'https://static-barocert.linkhub.co.kr';
-  const Version = '2.0';
+  const Version = '2.1';
 
   private $ServiceURL;
 
@@ -137,16 +137,16 @@ class BaseService
         $xDate = $this->Linkhub->getTime($this->UseStaticIP, false, false);
 
         $digestTarget = 'POST' . chr(10);
-        $digestTarget = $digestTarget . $uri . chr(10);
         if($postdata){
           $digestTarget = $digestTarget . base64_encode(hash('sha256', $postdata, true)) . chr(10);
         }
         $digestTarget = $digestTarget . $xDate . chr(10);
+        $digestTarget = $digestTarget . $uri . chr(10);
 
         $digest = base64_encode(hash_hmac('sha256', $digestTarget, base64_decode(strtr($this->Linkhub->getSecretKey(), '-_', '+/')), true));
 
         $header[] = 'x-bc-date: ' . $xDate;
-        $header[] = 'x-bc-version: ' . '2.0';
+        $header[] = 'x-bc-version: ' . BaseService::Version;
         $header[] = 'x-bc-auth: ' . $digest;
         $header[] = 'x-bc-encryptionmode: ' . 'GCM';
       }
@@ -187,14 +187,14 @@ class BaseService
       $xDate = $this->Linkhub->getTime($this->UseStaticIP, false, false);
 
       $digestTarget = 'POST' . chr(10);
-      $digestTarget = $digestTarget . $uri . chr(10);
       $digestTarget = $digestTarget . base64_encode(hash('sha256', $postdata, true)) . chr(10);
       $digestTarget = $digestTarget . $xDate . chr(10);
+      $digestTarget = $digestTarget . $uri . chr(10);
 
       $digest = base64_encode(hash_hmac('sha256', $digestTarget, base64_decode(strtr($this->Linkhub->getSecretKey(), '-_', '+/')), true));
 
       $header[] = 'x-bc-date: ' . $xDate;
-      $header[] = 'x-bc-version: ' . '2.0';
+      $header[] = 'x-bc-version: ' . BaseService::Version;
       $header[] = 'x-bc-auth: ' . $digest;
       $header[] = 'x-bc-encryptionmode: ' . 'GCM';
 
@@ -237,7 +237,7 @@ class BaseService
     }
   }
 
-  public function encrypt($data, $algorithm){
+  public function enc($data, $algorithm){
     if($algorithm === "AES") {
       return $this->encAES256GCM($data);
     }
