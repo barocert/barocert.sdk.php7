@@ -76,6 +76,11 @@ class BaseService
     $this->ServiceURL = $V;
   }
 
+  public function AuthURL($V)
+  {
+    $this->Linkhub->ServiceURL($V);
+  }
+
   private function getTargetURL()
   {
     if(isset($this->ServiceURL)) {
