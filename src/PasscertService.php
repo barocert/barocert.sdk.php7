@@ -181,7 +181,7 @@ class PasscertService extends BaseService
       throw new BarocertException('인증요청 메시지 제목이 입력되지 않았습니다.');
     }
     if (is_null($PassSign->callCenterNum) || empty($PassSign->callCenterNum)) {
-      throw new BarocertException('인증요청 메시지 제목이 입력되지 않았습니다.');
+      throw new BarocertException('고객센터 연락처가 입력되지 않았습니다.');
     }
     if (is_null($PassSign->expireIn) || empty($PassSign->expireIn)) {
       throw new BarocertException('만료시간이 입력되지 않았습니다.');
