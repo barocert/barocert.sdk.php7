@@ -416,7 +416,7 @@ class PasscertService extends BaseService
       throw new BarocertException('이용기관코드는 12자 입니다.');
     }
     if (is_null($PassLogin) || empty($PassLogin)) {
-      throw new BarocertException('본인인증 요청정보가 입력되지 않았습니다.');
+      throw new BarocertException('간편로그인 요청정보가 입력되지 않았습니다.');
     }
     if (is_null($PassLogin->receiverHP) || empty($PassLogin->receiverHP)) {
       throw new BarocertException('수신자 휴대폰번호가 입력되지 않았습니다.');
