@@ -2,7 +2,7 @@
 
 /**
  * =====================================================================================
- * Class for base module for Kakaocert API SDK. It include base functionality for
+ * Class for base module for Navercert API SDK. It include base functionality for
  * RESTful web service request and parse json result. It uses Linkhub module
  * to accomplish authentication APIs.
  *
@@ -31,7 +31,7 @@ class NavercertService extends BaseService
   }
 
   public function encrypt($data) {
-    return parent::encrypt($data, 'AES');
+    return parent::enc($data, 'AES');
   }
 
   /**
