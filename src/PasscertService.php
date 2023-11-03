@@ -13,7 +13,7 @@
  * Author : linkhub dev (code@linkhubcorp.com)
  * Contributor : jws (code@linkhubcorp.com)
  * Written : 2023-03-14
- * Updated : 2023-07-26
+ * Updated : 2023-11-03
  *
  * Thanks for your interest.
  * We welcome any suggestions, feedbacks, blames or anythings.
