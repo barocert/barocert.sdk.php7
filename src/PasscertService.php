@@ -541,13 +541,13 @@ class PassIdentity
 
 class PassIdentityReceipt
 {
-  public $receiptId;
+  public $receiptID;
   public $scheme;
   public $marketUrl;
 
   public function fromJsonInfo($jsonInfo)
   {
-    isset($jsonInfo->receiptId) ? $this->receiptId = $jsonInfo->receiptId : null;
+    isset($jsonInfo->receiptID) ? $this->receiptID = $jsonInfo->receiptID : null;
     isset($jsonInfo->scheme) ? $this->scheme = $jsonInfo->scheme : null;
     isset($jsonInfo->marketUrl) ? $this->marketUrl = $jsonInfo->marketUrl : null;
   }
@@ -663,13 +663,13 @@ class PassSign
 
 class PassSignReceipt
 {
-  public $receiptId;
+  public $receiptID;
   public $scheme;
   public $marketUrl;
 
   public function fromJsonInfo($jsonInfo)
   {
-    isset($jsonInfo->receiptId) ? $this->receiptId = $jsonInfo->receiptId : null;
+    isset($jsonInfo->receiptID) ? $this->receiptID = $jsonInfo->receiptID : null;
     isset($jsonInfo->scheme) ? $this->scheme = $jsonInfo->scheme : null;
     isset($jsonInfo->marketUrl) ? $this->marketUrl = $jsonInfo->marketUrl : null;
   }
@@ -793,13 +793,13 @@ class PassCMS
 
 class PassCMSReceipt
 {
-  public $receiptId;
+  public $receiptID;
   public $scheme;
   public $marketUrl;
 
   public function fromJsonInfo($jsonInfo)
   {
-    isset($jsonInfo->receiptId) ? $this->receiptId = $jsonInfo->receiptId : null;
+    isset($jsonInfo->receiptID) ? $this->receiptID = $jsonInfo->receiptID : null;
     isset($jsonInfo->scheme) ? $this->scheme = $jsonInfo->scheme : null;
     isset($jsonInfo->marketUrl) ? $this->marketUrl = $jsonInfo->marketUrl : null;
   }
@@ -913,13 +913,13 @@ class PassLogin
 
 class PassLoginReceipt
 {
-  public $receiptId;
+  public $receiptID;
   public $scheme;
   public $marketUrl;
 
   public function fromJsonInfo($jsonInfo)
   {
-    isset($jsonInfo->receiptId) ? $this->receiptId = $jsonInfo->receiptId : null;
+    isset($jsonInfo->receiptID) ? $this->receiptID = $jsonInfo->receiptID : null;
     isset($jsonInfo->scheme) ? $this->scheme = $jsonInfo->scheme : null;
     isset($jsonInfo->marketUrl) ? $this->marketUrl = $jsonInfo->marketUrl : null;
   }
