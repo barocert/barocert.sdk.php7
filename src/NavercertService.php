@@ -12,7 +12,7 @@
  * https://www.linkhub.co.kr
  * Author : linkhub dev (code@linkhubcorp.com)
  * Written : 2023-09-01
- * Updated : 2023-11-03
+ * Updated : 2023-11-23
  *
  * Thanks for your interest.
  * We welcome any suggestions, feedbacks, blames or anythings.

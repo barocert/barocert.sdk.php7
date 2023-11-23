@@ -13,7 +13,7 @@
  * Author : linkhub dev (code@linkhubcorp.com)
  * Contributor : jws (code@linkhubcorp.com)
  * Written : 2023-03-14
- * Updated : 2023-11-03
+ * Updated : 2023-11-23
  *
  * Thanks for your interest.
  * We welcome any suggestions, feedbacks, blames or anythings.
@@ -65,8 +65,10 @@ class KakaocertService extends BaseService
     if (is_null($KakaoIdentity->expireIn) || empty($KakaoIdentity->expireIn)) {
       throw new BarocertException('만료시간이 입력되지 않았습니다.');
     }
-    if (is_null($KakaoIdentity->reqTitle) || empty($KakaoIdentity->reqTitle)) {
-      throw new BarocertException('인증요청 메시지 제목이 입력되지 않았습니다.');
+    if (is_null($KakaoIdentity->signTitle) || empty($KakaoIdentity->signTitle)) {
+      if (is_null($KakaoIdentity->reqTitle) || empty($KakaoIdentity->reqTitle)) {
+        throw new BarocertException('인증요청 메시지 제목이 입력되지 않았습니다.');
+      }
     }
     if (is_null($KakaoIdentity->token) || empty($KakaoIdentity->token)) {
       throw new BarocertException('토큰 원문이 입력되지 않았습니다.');
@@ -516,8 +518,10 @@ class KakaocertService extends BaseService
     if($multiSignTokens == null) return true;
     foreach($multiSignTokens as $signTokens){
       if($signTokens == null) return true;
-      if (is_null($signTokens -> reqTitle) || empty($signTokens -> reqTitle)) {
-        return true;
+      if (is_null($signTokens -> signTitle) || empty($signTokens -> signTitle)) {
+        if (is_null($signTokens -> reqTitle) || empty($signTokens -> reqTitle)) {
+          return true;
+        }
       }
     }
     return false;
@@ -542,6 +546,7 @@ class KakaoIdentity
   public $receiverName;
   public $receiverBirthday;
   public $reqTitle;
+  public $extraMessage;
   public $expireIn;
   public $token;
   public $returnURL;
@@ -624,6 +629,8 @@ class KakaoSign
   public $receiverName;
   public $receiverBirthday;
   public $reqTitle;
+  public $signTitle;
+  public $extraMessage;
   public $expireIn;
   public $token;
   public $tokenType;
@@ -708,6 +715,7 @@ class KakaoMultiSign
   public $receiverName;
   public $receiverBirthday;
   public $reqTitle;
+  public $extraMessage;
   public $expireIn;
   public $tokens;
   public $tokenType;
@@ -718,6 +726,7 @@ class KakaoMultiSign
 class KakaoMultiSignTokens
 {
   public $reqTitle;
+  public $signTitle;
   public $token;
 }
 
@@ -799,6 +808,7 @@ class KakaoCMS
   public $receiverName;
   public $receiverBirthday;
   public $reqTitle;
+  public $extraMessage;
   public $expireIn;
   public $returnURL;	
   public $requestCorp;
