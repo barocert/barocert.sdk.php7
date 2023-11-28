@@ -174,10 +174,8 @@ class KakaocertService extends BaseService
     if (is_null($KakaoSign->expireIn) || empty($KakaoSign->expireIn)) {
       throw new BarocertException('만료시간이 입력되지 않았습니다.');
     }
-    if (is_null($KakaoSign->signTitle) || empty($KakaoSign->signTitle)) {
-      if (is_null($KakaoSign->reqTitle) || empty($KakaoSign->reqTitle)) {
-        throw new BarocertException('서명 요청 제목이 입력되지 않았습니다.');
-      }
+    if ((is_null($KakaoSign->signTitle) || empty($KakaoSign->signTitle)) && (is_null($KakaoSign->reqTitle) || empty($KakaoSign->reqTitle))) {
+      throw new BarocertException('서명 요청 제목이 입력되지 않았습니다.');
     }
     if (is_null($KakaoSign->token) || empty($KakaoSign->token)) {
       throw new BarocertException('토큰 원문이 입력되지 않았습니다.');
@@ -520,10 +518,8 @@ class KakaocertService extends BaseService
     if($multiSignTokens == null) return true;
     foreach($multiSignTokens as $signTokens){
       if($signTokens == null) return true;
-      if (is_null($signTokens -> signTitle) || empty($signTokens -> signTitle)) {
-        if (is_null($signTokens -> reqTitle) || empty($signTokens -> reqTitle)) {
-          return true;
-        }
+      if ((is_null($signTokens -> signTitle) || empty($signTokens -> signTitle)) && (is_null($signTokens -> reqTitle) || empty($signTokens -> reqTitle))) {
+        return true;
       }
     }
     return false;
