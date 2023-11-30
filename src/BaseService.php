@@ -241,7 +241,7 @@ class BaseService
     }
   }
 
-  public function enc($data, $algorithm){
+  public function encryptTo($data, $algorithm){
     if($algorithm === "AES") {
       return $this->encAES256GCM($data);
     }

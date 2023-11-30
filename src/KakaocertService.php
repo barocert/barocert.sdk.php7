@@ -13,7 +13,7 @@
  * Author : linkhub dev (code@linkhubcorp.com)
  * Contributor : jws (code@linkhubcorp.com)
  * Written : 2023-03-14
- * Updated : 2023-11-23
+ * Updated : 2023-11-30
  *
  * Thanks for your interest.
  * We welcome any suggestions, feedbacks, blames or anythings.
@@ -23,6 +23,7 @@
 namespace Linkhub\Barocert;
 
 require_once 'BaseService.php';
+require 'Util.php';
 
 class KakaocertService extends BaseService
 {
@@ -33,7 +34,7 @@ class KakaocertService extends BaseService
   }
 
   public function encrypt($data) {
-    return parent::enc($data, 'AES');
+    return parent::encryptTo($data, 'AES');
   }
 
   /**
@@ -41,36 +42,34 @@ class KakaocertService extends BaseService
    */
   public function requestIdentity($ClientCode, $KakaoIdentity)
   {
-    if (is_null($ClientCode) || empty($ClientCode)) {
+    if (Stringz::isNullorEmpty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (preg_match("/^[0-9]*$/", $ClientCode) == 0) {
+    if (Stringz::isNumber($ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
       throw new BarocertException('이용기관코드는 12자 입니다.');
     }
-    if (is_null($KakaoIdentity) || empty($KakaoIdentity)) {
+    if (Stringz::isNullorEmpty($KakaoIdentity)) {
       throw new BarocertException('본인인증 요청정보가 입력되지 않았습니다.');
     }
-    if (is_null($KakaoIdentity->receiverHP) || empty($KakaoIdentity->receiverHP)) {
+    if (Stringz::isNullorEmpty($KakaoIdentity->receiverHP)) {
       throw new BarocertException('수신자 휴대폰번호가 입력되지 않았습니다.');
     }
-    if (is_null($KakaoIdentity->receiverName) || empty($KakaoIdentity->receiverName)) {
+    if (Stringz::isNullorEmpty($KakaoIdentity->receiverName)) {
       throw new BarocertException('수신자 성명이 입력되지 않았습니다.');
     }
-    if (is_null($KakaoIdentity->receiverBirthday) || empty($KakaoIdentity->receiverBirthday)) {
+    if (Stringz::isNullorEmpty($KakaoIdentity->receiverBirthday)) {
       throw new BarocertException('생년월일이 입력되지 않았습니다.');
     }
-    if (is_null($KakaoIdentity->expireIn) || empty($KakaoIdentity->expireIn)) {
+    if (Stringz::isNullorEmpty($KakaoIdentity->expireIn)) {
       throw new BarocertException('만료시간이 입력되지 않았습니다.');
     }
-    if (is_null($KakaoIdentity->signTitle) || empty($KakaoIdentity->signTitle)) {
-      if (is_null($KakaoIdentity->reqTitle) || empty($KakaoIdentity->reqTitle)) {
-        throw new BarocertException('인증요청 메시지 제목이 입력되지 않았습니다.');
-      }
+    if (Stringz::isNullorEmpty($KakaoIdentity->reqTitle)) {
+      throw new BarocertException('인증요청 메시지 제목이 입력되지 않았습니다.');
     }
-    if (is_null($KakaoIdentity->token) || empty($KakaoIdentity->token)) {
+    if (Stringz::isNullorEmpty($KakaoIdentity->token)) {
       throw new BarocertException('토큰 원문이 입력되지 않았습니다.');
     }
 
@@ -88,19 +87,19 @@ class KakaocertService extends BaseService
    */
   public function getIdentityStatus($ClientCode, $ReceiptID)
   {
-    if (is_null($ClientCode) || empty($ClientCode)) {
+    if (Stringz::isNullorEmpty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (preg_match("/^[0-9]*$/", $ClientCode) == 0) {
+    if (Stringz::isNumber($ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
       throw new BarocertException('이용기관코드는 12자 입니다.');
     }
-    if (is_null($ReceiptID) || empty($ReceiptID)) {
+    if (Stringz::isNullorEmpty($ReceiptID)) {
       throw new BarocertException('접수아이디가 입력되지 않았습니다.');
     }
-    if (preg_match("/^[0-9]*$/", $ReceiptID) == 0) {
+    if (Stringz::isNumber($ReceiptID) == 0) {
       throw new BarocertException('접수아이디는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ReceiptID) != 32) {
@@ -119,19 +118,19 @@ class KakaocertService extends BaseService
    */
   public function verifyIdentity($ClientCode, $ReceiptID)
   {
-    if (is_null($ClientCode) || empty($ClientCode)) {
+    if (Stringz::isNullorEmpty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (preg_match("/^[0-9]*$/", $ClientCode) == 0) {
+    if (Stringz::isNumber($ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
       throw new BarocertException('이용기관코드는 12자 입니다.');
     }
-    if (is_null($ReceiptID) || empty($ReceiptID)) {
+    if (Stringz::isNullorEmpty($ReceiptID)) {
       throw new BarocertException('접수아이디가 입력되지 않았습니다.');
     }
-    if (preg_match("/^[0-9]*$/", $ReceiptID) == 0) {
+    if (Stringz::isNumber($ReceiptID) == 0) {
       throw new BarocertException('접수아이디는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ReceiptID) != 32) {
@@ -150,37 +149,37 @@ class KakaocertService extends BaseService
    */
   public function RequestSign($ClientCode, $KakaoSign)
   {
-    if (is_null($ClientCode) || empty($ClientCode)) {
+    if (Stringz::isNullorEmpty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (preg_match("/^[0-9]*$/", $ClientCode) == 0) {
+    if (isNumber($ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
       throw new BarocertException('이용기관코드는 12자 입니다.');
     }
-    if (is_null($KakaoSign) || empty($KakaoSign)) {
+    if (Stringz::isNullorEmpty($KakaoSign)) {
       throw new BarocertException('전자서명 요청정보가 입력되지 않았습니다.');
     }
-    if (is_null($KakaoSign->receiverHP) || empty($KakaoSign->receiverHP)) {
+    if (Stringz::isNullorEmpty($KakaoSign->receiverHP)) {
       throw new BarocertException('수신자 휴대폰번호가 입력되지 않았습니다.');
     }
-    if (is_null($KakaoSign->receiverName) || empty($KakaoSign->receiverName)) {
+    if (Stringz::isNullorEmpty($KakaoSign->receiverName)) {
       throw new BarocertException('수신자 성명이 입력되지 않았습니다.');
     }
-    if (is_null($KakaoSign->receiverBirthday) || empty($KakaoSign->receiverBirthday)) {
+    if (Stringz::isNullorEmpty($KakaoSign->receiverBirthday)) {
       throw new BarocertException('생년월일이 입력되지 않았습니다.');
     }
-    if (is_null($KakaoSign->expireIn) || empty($KakaoSign->expireIn)) {
+    if (Stringz::isNullorEmpty($KakaoSign->expireIn)) {
       throw new BarocertException('만료시간이 입력되지 않았습니다.');
     }
-    if ((is_null($KakaoSign->signTitle) || empty($KakaoSign->signTitle)) && (is_null($KakaoSign->reqTitle) || empty($KakaoSign->reqTitle))) {
+    if (Stringz::isNullorEmpty($KakaoSign->signTitle) && Stringz::isNullorEmpty($KakaoSign->reqTitle)) {
       throw new BarocertException('서명 요청 제목이 입력되지 않았습니다.');
     }
-    if (is_null($KakaoSign->token) || empty($KakaoSign->token)) {
+    if (Stringz::isNullorEmpty($KakaoSign->token)) {
       throw new BarocertException('토큰 원문이 입력되지 않았습니다.');
     }
-    if (is_null($KakaoSign->tokenType) || empty($KakaoSign->tokenType)) {
+    if (Stringz::isNullorEmpty($KakaoSign->tokenType)) {
       throw new BarocertException('원문 유형이 입력되지 않았습니다.');
     }
 
@@ -198,19 +197,19 @@ class KakaocertService extends BaseService
    */
   public function getSignStatus($ClientCode, $ReceiptID)
   {
-    if (is_null($ClientCode) || empty($ClientCode)) {
+    if (Stringz::isNullorEmpty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (preg_match("/^[0-9]*$/", $ClientCode) == 0) {
+    if (Stringz::isNumber($ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
       throw new BarocertException('이용기관코드는 12자 입니다.');
     }
-    if (is_null($ReceiptID) || empty($ReceiptID)) {
+    if (Stringz::isNullorEmpty($ReceiptID)) {
       throw new BarocertException('접수아이디가 입력되지 않았습니다.');
     }
-    if (preg_match("/^[0-9]*$/", $ReceiptID) == 0) {
+    if (Stringz::isNumber($ReceiptID) == 0) {
       throw new BarocertException('접수아이디는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ReceiptID) != 32) {
@@ -229,19 +228,19 @@ class KakaocertService extends BaseService
    */
   public function verifySign($ClientCode, $ReceiptID)
   {
-    if (is_null($ClientCode) || empty($ClientCode)) {
+    if (Stringz::isNullorEmpty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (preg_match("/^[0-9]*$/", $ClientCode) == 0) {
+    if (Stringz::isNumber($ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
       throw new BarocertException('이용기관코드는 12자 입니다.');
     }
-    if (is_null($ReceiptID) || empty($ReceiptID)) {
+    if (Stringz::isNullorEmpty($ReceiptID)) {
       throw new BarocertException('접수아이디가 입력되지 않았습니다.');
     }
-    if (preg_match("/^[0-9]*$/", $ReceiptID) == 0) {
+    if (Stringz::isNumber($ReceiptID) == 0) {
       throw new BarocertException('접수아이디는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ReceiptID) != 32) {
@@ -260,31 +259,31 @@ class KakaocertService extends BaseService
    */
   public function requestMultiSign($ClientCode, $KakaoMultiSign)
   {
-    if (is_null($ClientCode) || empty($ClientCode)) {
+    if (Stringz::isNullorEmpty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (is_null($ClientCode) || empty($ClientCode)) {
+    if (Stringz::isNullorEmpty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (preg_match("/^[0-9]*$/", $ClientCode) == 0) {
+    if (Stringz::isNumber($ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
       throw new BarocertException('이용기관코드는 12자 입니다.');
     }
-    if (is_null($KakaoMultiSign) || empty($KakaoMultiSign)) {
+    if (Stringz::isNullorEmpty($KakaoMultiSign)) {
       throw new BarocertException('전자서명 요청정보가 입력되지 않았습니다.');
     }
-    if (is_null($KakaoMultiSign->receiverHP) || empty($KakaoMultiSign->receiverHP)) {
+    if (Stringz::isNullorEmpty($KakaoMultiSign->receiverHP)) {
       throw new BarocertException('수신자 휴대폰번호가 입력되지 않았습니다.');
     }
-    if (is_null($KakaoMultiSign->receiverName) || empty($KakaoMultiSign->receiverName)) {
+    if (Stringz::isNullorEmpty($KakaoMultiSign->receiverName)) {
       throw new BarocertException('수신자 성명이 입력되지 않았습니다.');
     }
-    if (is_null($KakaoMultiSign->receiverBirthday) || empty($KakaoMultiSign->receiverBirthday)) {
+    if (Stringz::isNullorEmpty($KakaoMultiSign->receiverBirthday)) {
       throw new BarocertException('생년월일이 입력되지 않았습니다.');
     }
-    if (is_null($KakaoMultiSign->expireIn) || empty($KakaoMultiSign->expireIn)) {
+    if (Stringz::isNullorEmpty($KakaoMultiSign->expireIn)) {
       throw new BarocertException('만료시간이 입력되지 않았습니다.');
     }
     if ($this->isNullorEmptyTitle($KakaoMultiSign->tokens)) {
@@ -293,7 +292,7 @@ class KakaocertService extends BaseService
     if ($this->isNullorEmptyToken($KakaoMultiSign->tokens)) {
       throw new BarocertException('토큰 원문이 입력되지 않았습니다.');
     }
-    if (is_null($KakaoMultiSign->tokenType) || empty($KakaoMultiSign->tokenType)) {
+    if (Stringz::isNullorEmpty($KakaoMultiSign->tokenType)) {
       throw new BarocertException('원문 유형이 입력되지 않았습니다.');
     }
 
@@ -310,19 +309,19 @@ class KakaocertService extends BaseService
    */
   public function getMultiSignStatus($ClientCode, $ReceiptID)
   {
-    if (is_null($ClientCode) || empty($ClientCode)) {
+    if (Stringz::isNullorEmpty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (preg_match("/^[0-9]*$/", $ClientCode) == 0) {
+    if (Stringz::isNumber($ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
       throw new BarocertException('이용기관코드는 12자 입니다.');
     }
-    if (is_null($ReceiptID) || empty($ReceiptID)) {
+    if (Stringz::isNullorEmpty($ReceiptID)) {
       throw new BarocertException('접수아이디가 입력되지 않았습니다.');
     }
-    if (preg_match("/^[0-9]*$/", $ReceiptID) == 0) {
+    if (Stringz::isNumber($ReceiptID) == 0) {
       throw new BarocertException('접수아이디는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ReceiptID) != 32) {
@@ -341,19 +340,19 @@ class KakaocertService extends BaseService
    */
   public function verifyMultiSign($ClientCode, $ReceiptID)
   {
-    if (is_null($ClientCode) || empty($ClientCode)) {
+    if (Stringz::isNullorEmpty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (preg_match("/^[0-9]*$/", $ClientCode) == 0) {
+    if (Stringz::isNumber($ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
       throw new BarocertException('이용기관코드는 12자 입니다.');
     }
-    if (is_null($ReceiptID) || empty($ReceiptID)) {
+    if (Stringz::isNullorEmpty($ReceiptID)) {
       throw new BarocertException('접수아이디가 입력되지 않았습니다.');
     }
-    if (preg_match("/^[0-9]*$/", $ReceiptID) == 0) {
+    if (Stringz::isNumber($ReceiptID) == 0) {
       throw new BarocertException('접수아이디는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ReceiptID) != 32) {
@@ -372,49 +371,49 @@ class KakaocertService extends BaseService
    */
   public function requestCMS($ClientCode, $KakaoCMS)
   {
-    if (is_null($ClientCode) || empty($ClientCode)) {
+    if (Stringz::isNullorEmpty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (preg_match("/^[0-9]*$/", $ClientCode) == 0) {
+    if (Stringz::isNumber($ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
       throw new BarocertException('이용기관코드는 12자 입니다.');
     }
-    if (is_null($KakaoCMS) || empty($KakaoCMS)) {
+    if (Stringz::isNullorEmpty($KakaoCMS)) {
       throw new BarocertException('자동이체 출금동의 요청정보가 입력되지 않았습니다.');
     }
-    if (is_null($KakaoCMS->receiverHP) || empty($KakaoCMS->receiverHP)) {
+    if (Stringz::isNullorEmpty($KakaoCMS->receiverHP)) {
       throw new BarocertException('수신자 휴대폰번호가 입력되지 않았습니다.');
     }
-    if (is_null($KakaoCMS->receiverName) || empty($KakaoCMS->receiverName)) {
+    if (Stringz::isNullorEmpty($KakaoCMS->receiverName)) {
       throw new BarocertException('수신자 성명이 입력되지 않았습니다.');
     }
-    if (is_null($KakaoCMS->receiverBirthday) || empty($KakaoCMS->receiverBirthday)) {
+    if (Stringz::isNullorEmpty($KakaoCMS->receiverBirthday)) {
       throw new BarocertException('생년월일이 입력되지 않았습니다.');
     }
-    if (is_null($KakaoCMS->expireIn) || empty($KakaoCMS->expireIn)) {
+    if (Stringz::isNullorEmpty($KakaoCMS->expireIn)) {
       throw new BarocertException('만료시간이 입력되지 않았습니다.');
     }
-    if (is_null($KakaoCMS->reqTitle) || empty($KakaoCMS->reqTitle)) {
+    if (Stringz::isNullorEmpty($KakaoCMS->reqTitle)) {
       throw new BarocertException('인증요청 메시지 제목이 입력되지 않았습니다.');
     }
-    if (is_null($KakaoCMS->requestCorp) || empty($KakaoCMS->requestCorp)) {
+    if (Stringz::isNullorEmpty($KakaoCMS->requestCorp)) {
       throw new BarocertException('청구기관명이 입력되지 않았습니다.');
     }
-    if (is_null($KakaoCMS->bankName) || empty($KakaoCMS->bankName)) {
+    if (Stringz::isNullorEmpty($KakaoCMS->bankName)) {
       throw new BarocertException('은행명이 입력되지 않았습니다.');
     }
-    if (is_null($KakaoCMS->bankAccountNum) || empty($KakaoCMS->bankAccountNum)) {
+    if (Stringz::isNullorEmpty($KakaoCMS->bankAccountNum)) {
       throw new BarocertException('계좌번호가 입력되지 않았습니다.');
     }
-    if (is_null($KakaoCMS->bankAccountName) || empty($KakaoCMS->bankAccountName)) {
+    if (Stringz::isNullorEmpty($KakaoCMS->bankAccountName)) {
       throw new BarocertException('예금주명이 입력되지 않았습니다.');
     }
-    if (is_null($KakaoCMS->bankAccountBirthday) || empty($KakaoCMS->bankAccountBirthday)) {
+    if (Stringz::isNullorEmpty($KakaoCMS->bankAccountBirthday)) {
       throw new BarocertException('예금주 생년월일이 입력되지 않았습니다.');
     }
-    if (is_null($KakaoCMS->bankServiceType) || empty($KakaoCMS->bankServiceType)) {
+    if (Stringz::isNullorEmpty($KakaoCMS->bankServiceType)) {
       throw new BarocertException('출금 유형이 입력되지 않았습니다.');
     }
 
@@ -432,19 +431,19 @@ class KakaocertService extends BaseService
    */
   public function getCMSStatus($ClientCode, $ReceiptID)
   {
-    if (is_null($ClientCode) || empty($ClientCode)) {
+    if (Stringz::isNullorEmpty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (preg_match("/^[0-9]*$/", $ClientCode) == 0) {
+    if (Stringz::isNumber($ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
       throw new BarocertException('이용기관코드는 12자 입니다.');
     }
-    if (is_null($ReceiptID) || empty($ReceiptID)) {
+    if (Stringz::isNullorEmpty($ReceiptID)) {
       throw new BarocertException('접수아이디가 입력되지 않았습니다.');
     }
-    if (preg_match("/^[0-9]*$/", $ReceiptID) == 0) {
+    if (Stringz::isNumber($ReceiptID) == 0) {
       throw new BarocertException('접수아이디는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ReceiptID) != 32) {
@@ -463,19 +462,19 @@ class KakaocertService extends BaseService
    */
   public function verifyCMS($ClientCode, $ReceiptID)
   {
-    if (is_null($ClientCode) || empty($ClientCode)) {
+    if (Stringz::isNullorEmpty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (preg_match("/^[0-9]*$/", $ClientCode) == 0) {
+    if (Stringz::isNumber($ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
       throw new BarocertException('이용기관코드는 12자 입니다.');
     }
-    if (is_null($ReceiptID) || empty($ReceiptID)) {
+    if (Stringz::isNullorEmpty($ReceiptID)) {
       throw new BarocertException('접수아이디가 입력되지 않았습니다.');
     }
-    if (preg_match("/^[0-9]*$/", $ReceiptID) == 0) {
+    if (Stringz::isNumber($ReceiptID) == 0) {
       throw new BarocertException('접수아이디는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ReceiptID) != 32) {
@@ -494,16 +493,16 @@ class KakaocertService extends BaseService
    */
   public function verifyLogin($ClientCode, $TxID)
   {
-    if (is_null($ClientCode) || empty($ClientCode)) {
+    if (Stringz::isNullorEmpty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (preg_match("/^[0-9]*$/", $ClientCode) == 0) {
+    if (Stringz::isNumber($ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
       throw new BarocertException('이용기관코드는 12자 입니다.');
     }
-    if (is_null($TxID) || empty($TxID)) {
+    if (Stringz::isNullorEmpty($TxID)) {
       throw new BarocertException('트랜잭션 아이디가 입력되지 않았습니다.');
     }
 
@@ -518,9 +517,7 @@ class KakaocertService extends BaseService
     if($multiSignTokens == null) return true;
     foreach($multiSignTokens as $signTokens){
       if($signTokens == null) return true;
-      if ((is_null($signTokens -> signTitle) || empty($signTokens -> signTitle)) && (is_null($signTokens -> reqTitle) || empty($signTokens -> reqTitle))) {
-        return true;
-      }
+      if(Stringz::isNullorEmpty($signTokens -> signTitle) && Stringz::isNullorEmpty($signTokens -> reqTitle)) return true;
     }
     return false;
   }
@@ -529,9 +526,7 @@ class KakaocertService extends BaseService
     if($multiSignTokens == null) return true;
     foreach($multiSignTokens as $signTokens){
       if($signTokens == null) return true;
-      if (is_null($signTokens -> token) || empty($signTokens -> token)) {
-        return true;
-      }
+      if(Stringz::isNullorEmpty($signTokens -> token)) return true;
     }
     return false;
   }
