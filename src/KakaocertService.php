@@ -152,7 +152,7 @@ class KakaocertService extends BaseService
     if (Stringz::isNullorEmpty($ClientCode)) {
       throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
     }
-    if (isNumber($ClientCode) == 0) {
+    if (Stringz::isNumber($ClientCode) == 0) {
       throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
     }
     if (strlen($ClientCode) != 12) {
