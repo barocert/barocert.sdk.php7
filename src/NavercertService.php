@@ -12,7 +12,7 @@
  * https://www.linkhub.co.kr
  * Author : linkhub dev (code@linkhubcorp.com)
  * Written : 2023-09-01
- * Updated : 2023-11-30
+ * Updated : 2023-12-07
  *
  * Thanks for your interest.
  * We welcome any suggestions, feedbacks, blames or anythings.
@@ -28,12 +28,16 @@ class NavercertService extends BaseService
 {
   public function __construct($LinkID, $SecretKey)
   {
-    $scope = array('421', '422', '423');
+    $scope = array('421', '422', '423', '424');
     parent::__construct($LinkID, $SecretKey, $scope);
   }
 
   public function encrypt($data) {
     return parent::encryptTo($data, 'AES');
+  }
+
+  public function sha256($data) {
+    return parent::sha256URLEncode($data);
   }
 
   /**
@@ -665,6 +669,85 @@ class NaverMultiSignResult
     isset($jsonInfo->receiverEmail) ? $this->receiverEmail = $jsonInfo->receiverEmail : null;
     isset($jsonInfo->receiverForeign) ? $this->receiverForeign = $jsonInfo->receiverForeign : null;
     isset($jsonInfo->multiSignedData) ? $this->multiSignedData = $jsonInfo->multiSignedData : null;
+    isset($jsonInfo->ci) ? $this->ci = $jsonInfo->ci : null;
+  }
+}
+
+class NaverCMS
+{
+  public $receiverHP;
+  public $receiverName;
+  public $receiverBirthday;
+  public $callCenterNum;
+  public $reqTitle;
+  public $reqMessage;
+  public $expireIn;
+  public $requestCorp;
+  public $bankName;
+  public $bankAccountNum;
+  public $bankAccountName;
+  public $bankAccountBirthday;
+  public $returnURL;
+  public $deviceOSType;
+  public $appUseYN;
+}
+
+class NaverCMSReceipt
+{
+  public $receiptID;
+  public $scheme;
+  public $marketUrl;
+
+  public function fromJsonInfo($jsonInfo)
+  {
+    isset($jsonInfo->receiptID) ? $this->receiptID = $jsonInfo->receiptID : null;
+    isset($jsonInfo->scheme) ? $this->scheme = $jsonInfo->scheme : null;
+    isset($jsonInfo->marketUrl) ? $this->marketUrl = $jsonInfo->marketUrl : null;
+  }
+}
+
+class NaverCMSStatus
+{
+  public $receiptID;
+  public $clientCode;
+  public $state;
+  public $expireDT;
+
+  public function fromJsonInfo($jsonInfo)
+  {
+    isset($jsonInfo->receiptID) ? $this->receiptID = $jsonInfo->receiptID : null;
+    isset($jsonInfo->clientCode) ? $this->clientCode = $jsonInfo->clientCode : null;
+    isset($jsonInfo->state) ? $this->state = $jsonInfo->state : null;
+    isset($jsonInfo->expireDT) ? $this->expireDT = $jsonInfo->expireDT : null;
+  }
+}
+
+class NaverCMSResult
+{
+  public $receiptID;
+  public $state;
+  public $receiverName;
+  public $receiverYear;
+  public $receiverDay;
+  public $receiverHP;
+  public $receiverGender;
+  public $receiverEmail;
+  public $receiverForeign;
+  public $signedData;
+  public $ci;
+
+  public function fromJsonInfo($jsonInfo)
+  {
+    isset($jsonInfo->receiptID) ? $this->receiptID = $jsonInfo->receiptID : null;
+    isset($jsonInfo->state) ? $this->state = $jsonInfo->state : null;
+    isset($jsonInfo->receiverName) ? $this->receiverName = $jsonInfo->receiverName : null;
+    isset($jsonInfo->receiverYear) ? $this->receiverYear = $jsonInfo->receiverYear : null;
+    isset($jsonInfo->receiverDay) ? $this->receiverDay = $jsonInfo->receiverDay : null;
+    isset($jsonInfo->receiverHP) ? $this->receiverHP = $jsonInfo->receiverHP : null;
+    isset($jsonInfo->receiverGender) ? $this->receiverGender = $jsonInfo->receiverGender : null;
+    isset($jsonInfo->receiverEmail) ? $this->receiverEmail = $jsonInfo->receiverEmail : null;
+    isset($jsonInfo->receiverForeign) ? $this->receiverForeign = $jsonInfo->receiverForeign : null;
+    isset($jsonInfo->signedData) ? $this->signedData = $jsonInfo->signedData : null;
     isset($jsonInfo->ci) ? $this->ci = $jsonInfo->ci : null;
   }
 }
