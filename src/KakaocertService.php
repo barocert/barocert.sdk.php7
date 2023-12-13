@@ -13,7 +13,7 @@
  * Author : linkhub dev (code@linkhubcorp.com)
  * Contributor : jws (code@linkhubcorp.com)
  * Written : 2023-03-14
- * Updated : 2023-12-07
+ * Updated : 2023-12-13
  *
  * Thanks for your interest.
  * We welcome any suggestions, feedbacks, blames or anythings.
@@ -582,19 +582,19 @@ class KakaoIdentityStatus
     isset($jsonInfo->receiptID) ? $this->receiptID = $jsonInfo->receiptID : null;
     isset($jsonInfo->clientCode) ? $this->clientCode = $jsonInfo->clientCode : null;
     isset($jsonInfo->state) ? $this->state = $jsonInfo->state : null;
-    isset($jsonInfo->expireIn) ? $this->expireIn = $jsonInfo->expireIn : null;
-    isset($jsonInfo->callCenterName) ? $this->callCenterName = $jsonInfo->callCenterName : null;
-    isset($jsonInfo->callCenterNum) ? $this->callCenterNum = $jsonInfo->callCenterNum : null;
-    isset($jsonInfo->reqTitle) ? $this->reqTitle = $jsonInfo->reqTitle : null;
-    isset($jsonInfo->authCategory) ? $this->authCategory = $jsonInfo->authCategory : null;
-    isset($jsonInfo->returnURL) ? $this->returnURL = $jsonInfo->returnURL : null;
+    isset($jsonInfo->expireIn) ? $this->expireIn = $jsonInfo->expireIn : null;                    // deprecated
+    isset($jsonInfo->callCenterName) ? $this->callCenterName = $jsonInfo->callCenterName : null;  // deprecated
+    isset($jsonInfo->callCenterNum) ? $this->callCenterNum = $jsonInfo->callCenterNum : null;     // deprecated
+    isset($jsonInfo->reqTitle) ? $this->reqTitle = $jsonInfo->reqTitle : null;                    // deprecated
+    isset($jsonInfo->authCategory) ? $this->authCategory = $jsonInfo->authCategory : null;        // deprecated
+    isset($jsonInfo->returnURL) ? $this->returnURL = $jsonInfo->returnURL : null;                 // deprecated
     isset($jsonInfo->requestDT) ? $this->requestDT = $jsonInfo->requestDT : null;
     isset($jsonInfo->viewDT) ? $this->viewDT = $jsonInfo->viewDT : null;
     isset($jsonInfo->completeDT) ? $this->completeDT = $jsonInfo->completeDT : null;
     isset($jsonInfo->expireDT) ? $this->expireDT = $jsonInfo->expireDT : null;
     isset($jsonInfo->verifyDT) ? $this->verifyDT = $jsonInfo->verifyDT : null;
-    isset($jsonInfo->scheme) ? $this->scheme = $jsonInfo->scheme : null;
-    isset($jsonInfo->appUseYN) ? $this->appUseYN = $jsonInfo->appUseYN : null;
+    isset($jsonInfo->scheme) ? $this->scheme = $jsonInfo->scheme : null;                          // deprecated
+    isset($jsonInfo->appUseYN) ? $this->appUseYN = $jsonInfo->appUseYN : null;                    // deprecated
   }
 }
 
@@ -669,20 +669,20 @@ class KakaoSignStatus
     isset($jsonInfo->receiptID) ? $this->receiptID = $jsonInfo->receiptID : null;
     isset($jsonInfo->clientCode) ? $this->clientCode = $jsonInfo->clientCode : null;
     isset($jsonInfo->state) ? $this->state = $jsonInfo->state : null;
-    isset($jsonInfo->expireIn) ? $this->expireIn = $jsonInfo->expireIn : null;
-    isset($jsonInfo->callCenterName) ? $this->callCenterName = $jsonInfo->callCenterName : null;
-    isset($jsonInfo->callCenterNum) ? $this->callCenterNum = $jsonInfo->callCenterNum : null;
-    isset($jsonInfo->reqTitle) ? $this->reqTitle = $jsonInfo->reqTitle : null;
-    isset($jsonInfo->authCategory) ? $this->authCategory = $jsonInfo->authCategory : null;
-    isset($jsonInfo->returnURL) ? $this->returnURL = $jsonInfo->returnURL : null;
-    isset($jsonInfo->tokenType) ? $this->tokenType = $jsonInfo->tokenType : null;
+    isset($jsonInfo->expireIn) ? $this->expireIn = $jsonInfo->expireIn : null;                    // deprecated
+    isset($jsonInfo->callCenterName) ? $this->callCenterName = $jsonInfo->callCenterName : null;  // deprecated
+    isset($jsonInfo->callCenterNum) ? $this->callCenterNum = $jsonInfo->callCenterNum : null;     // deprecated
+    isset($jsonInfo->reqTitle) ? $this->reqTitle = $jsonInfo->reqTitle : null;                    // deprecated
+    isset($jsonInfo->authCategory) ? $this->authCategory = $jsonInfo->authCategory : null;        // deprecated
+    isset($jsonInfo->returnURL) ? $this->returnURL = $jsonInfo->returnURL : null;                 // deprecated
+    isset($jsonInfo->tokenType) ? $this->tokenType = $jsonInfo->tokenType : null;                 // deprecated
     isset($jsonInfo->requestDT) ? $this->requestDT = $jsonInfo->requestDT : null;
     isset($jsonInfo->viewDT) ? $this->viewDT = $jsonInfo->viewDT : null;
     isset($jsonInfo->completeDT) ? $this->completeDT = $jsonInfo->completeDT : null;
     isset($jsonInfo->expireDT) ? $this->expireDT = $jsonInfo->expireDT : null;
     isset($jsonInfo->verifyDT) ? $this->verifyDT = $jsonInfo->verifyDT : null;
-    isset($jsonInfo->scheme) ? $this->scheme = $jsonInfo->scheme : null;
-    isset($jsonInfo->appUseYN) ? $this->appUseYN = $jsonInfo->appUseYN : null;
+    isset($jsonInfo->scheme) ? $this->scheme = $jsonInfo->scheme : null;                          // deprecated
+    isset($jsonInfo->appUseYN) ? $this->appUseYN = $jsonInfo->appUseYN : null;                    // deprecated
   }
 }
 
@@ -760,20 +760,20 @@ class KakaoMultiSignStatus
     isset($jsonInfo->receiptID) ? $this->receiptID = $jsonInfo->receiptID : null;
     isset($jsonInfo->clientCode) ? $this->clientCode = $jsonInfo->clientCode : null;
     isset($jsonInfo->state) ? $this->state = $jsonInfo->state : null;
-    isset($jsonInfo->expireIn) ? $this->expireIn = $jsonInfo->expireIn : null;
-    isset($jsonInfo->callCenterName) ? $this->callCenterName = $jsonInfo->callCenterName : null;
-    isset($jsonInfo->callCenterNum) ? $this->callCenterNum = $jsonInfo->callCenterNum : null;
-    isset($jsonInfo->reqTitle) ? $this->reqTitle = $jsonInfo->reqTitle : null;
-    isset($jsonInfo->authCategory) ? $this->authCategory = $jsonInfo->authCategory : null;
-    isset($jsonInfo->returnURL) ? $this->returnURL = $jsonInfo->returnURL : null;
-    isset($jsonInfo->tokenType) ? $this->tokenType = $jsonInfo->tokenType : null;
+    isset($jsonInfo->expireIn) ? $this->expireIn = $jsonInfo->expireIn : null;                    // deprecated
+    isset($jsonInfo->callCenterName) ? $this->callCenterName = $jsonInfo->callCenterName : null;  // deprecated
+    isset($jsonInfo->callCenterNum) ? $this->callCenterNum = $jsonInfo->callCenterNum : null;     // deprecated
+    isset($jsonInfo->reqTitle) ? $this->reqTitle = $jsonInfo->reqTitle : null;                    // deprecated
+    isset($jsonInfo->authCategory) ? $this->authCategory = $jsonInfo->authCategory : null;        // deprecated
+    isset($jsonInfo->returnURL) ? $this->returnURL = $jsonInfo->returnURL : null;                 // deprecated
+    isset($jsonInfo->tokenType) ? $this->tokenType = $jsonInfo->tokenType : null;                 // deprecated
     isset($jsonInfo->requestDT) ? $this->requestDT = $jsonInfo->requestDT : null;
     isset($jsonInfo->viewDT) ? $this->viewDT = $jsonInfo->viewDT : null;
     isset($jsonInfo->completeDT) ? $this->completeDT = $jsonInfo->completeDT : null;
     isset($jsonInfo->expireDT) ? $this->expireDT = $jsonInfo->expireDT : null;
     isset($jsonInfo->verifyDT) ? $this->verifyDT = $jsonInfo->verifyDT : null;
-    isset($jsonInfo->scheme) ? $this->scheme = $jsonInfo->scheme : null;
-    isset($jsonInfo->appUseYN) ? $this->appUseYN = $jsonInfo->appUseYN : null;
+    isset($jsonInfo->scheme) ? $this->scheme = $jsonInfo->scheme : null;                          // deprecated
+    isset($jsonInfo->appUseYN) ? $this->appUseYN = $jsonInfo->appUseYN : null;                    // deprecated
   }
 }
 
@@ -851,20 +851,20 @@ class KakaoCMSStatus
     isset($jsonInfo->receiptID) ? $this->receiptID = $jsonInfo->receiptID : null;
     isset($jsonInfo->clientCode) ? $this->clientCode = $jsonInfo->clientCode : null;
     isset($jsonInfo->state) ? $this->state = $jsonInfo->state : null;
-    isset($jsonInfo->expireIn) ? $this->expireIn = $jsonInfo->expireIn : null;
-    isset($jsonInfo->callCenterName) ? $this->callCenterName = $jsonInfo->callCenterName : null;
-    isset($jsonInfo->callCenterNum) ? $this->callCenterNum = $jsonInfo->callCenterNum : null;
-    isset($jsonInfo->reqTitle) ? $this->reqTitle = $jsonInfo->reqTitle : null;
-    isset($jsonInfo->authCategory) ? $this->authCategory = $jsonInfo->authCategory : null;
-    isset($jsonInfo->returnURL) ? $this->returnURL = $jsonInfo->returnURL : null;
-    isset($jsonInfo->tokenType) ? $this->tokenType = $jsonInfo->tokenType : null;
+    isset($jsonInfo->expireIn) ? $this->expireIn = $jsonInfo->expireIn : null;                    // deprecated
+    isset($jsonInfo->callCenterName) ? $this->callCenterName = $jsonInfo->callCenterName : null;  // deprecated
+    isset($jsonInfo->callCenterNum) ? $this->callCenterNum = $jsonInfo->callCenterNum : null;     // deprecated
+    isset($jsonInfo->reqTitle) ? $this->reqTitle = $jsonInfo->reqTitle : null;                    // deprecated
+    isset($jsonInfo->authCategory) ? $this->authCategory = $jsonInfo->authCategory : null;        // deprecated
+    isset($jsonInfo->returnURL) ? $this->returnURL = $jsonInfo->returnURL : null;                 // deprecated
+    isset($jsonInfo->tokenType) ? $this->tokenType = $jsonInfo->tokenType : null;                 // deprecated
     isset($jsonInfo->requestDT) ? $this->requestDT = $jsonInfo->requestDT : null;
     isset($jsonInfo->viewDT) ? $this->viewDT = $jsonInfo->viewDT : null;
     isset($jsonInfo->completeDT) ? $this->completeDT = $jsonInfo->completeDT : null;
     isset($jsonInfo->expireDT) ? $this->expireDT = $jsonInfo->expireDT : null;
     isset($jsonInfo->verifyDT) ? $this->verifyDT = $jsonInfo->verifyDT : null;
-    isset($jsonInfo->scheme) ? $this->scheme = $jsonInfo->scheme : null;
-    isset($jsonInfo->appUseYN) ? $this->appUseYN = $jsonInfo->appUseYN : null;
+    isset($jsonInfo->scheme) ? $this->scheme = $jsonInfo->scheme : null;                          // deprecated
+    isset($jsonInfo->appUseYN) ? $this->appUseYN = $jsonInfo->appUseYN : null;                    // deprecated
   }
 }
 
