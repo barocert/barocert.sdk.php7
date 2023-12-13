@@ -13,7 +13,7 @@
  * Author : linkhub dev (code@linkhubcorp.com)
  * Contributor : jws (code@linkhubcorp.com)
  * Written : 2023-03-14
- * Updated : 2023-12-07
+ * Updated : 2023-12-13
  *
  * Thanks for your interest.
  * We welcome any suggestions, feedbacks, blames or anythings.
@@ -241,7 +241,7 @@ class BaseService
     }
   }
 
-  public function sha256URLEncode($data){
+  public function sha256ToBase64url($data){
     $hash = hash('sha256', $data, true);
     $base64Encoded = rtrim(strtr(base64_encode($hash), '+/', '-_'), '=');
     return $base64Encoded;
