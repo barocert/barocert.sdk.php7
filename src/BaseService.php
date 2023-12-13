@@ -248,11 +248,15 @@ class BaseService
   }
 
   public function encryptTo($data, $algorithm){
-    if($algorithm === "AES") {
-      return $this->encAES256GCM($data);
-    }
-    else {
-      throw new BarocertException('지원하지 않는 암호화 알고리즘입니다.');
+    if ((version_compare(PHP_VERSION, '7.1') >= 0)) {
+      if($algorithm === "AES") {
+        return $this->encAES256GCM($data);
+      }
+      else {
+        throw new BarocertException('지원하지 않는 암호화 알고리즘입니다.');
+      }
+    } else {
+      throw new BarocertException('PHP v7.1 미만은 PHP v5 SDK만 사용할 수 있습니다.');
     }
   }
 
