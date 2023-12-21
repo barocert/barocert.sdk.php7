@@ -370,6 +370,125 @@ class NavercertService extends BaseService
     return $NaverMultiSignResult;
   }
 
+  /**
+   * 출금동의 요청
+   */
+  public function requestCMS($ClientCode, $NaverCMS)
+  {
+    if (Stringz::isNullorEmpty($ClientCode)) {
+      throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
+    }
+    if (Stringz::isNumber($ClientCode) == 0) {
+      throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
+    }
+    if (strlen($ClientCode) != 12) {
+      throw new BarocertException('이용기관코드는 12자 입니다.');
+    }
+    if (Stringz::isNullorEmpty($NaverCMS)) {
+      throw new BarocertException('출금동의 요청정보가 입력되지 않았습니다.');
+    }
+    if (Stringz::isNullorEmpty($NaverCMS->receiverHP)) {
+      throw new BarocertException('수신자 휴대폰번호가 입력되지 않았습니다.');
+    }
+    if (Stringz::isNullorEmpty($NaverCMS->receiverName)) {
+      throw new BarocertException('수신자 성명이 입력되지 않았습니다.');
+    }
+    if (Stringz::isNullorEmpty($NaverCMS->receiverBirthday)) {
+      throw new BarocertException('생년월일이 입력되지 않았습니다.');
+    }
+    if (Stringz::isNullorEmpty($NaverCMS->callCenterNum)) {
+      throw new BarocertException('고객센터 연락처가 입력되지 않았습니다.');
+    }
+    if (Stringz::isNullorEmpty($NaverCMS->expireIn)) {
+      throw new BarocertException('만료시간이 입력되지 않았습니다.');
+    }
+    if (Stringz::isNullorEmpty($NaverCMS->requestCorp)) {
+      throw new BarocertException('청구기관명이 입력되지 않았습니다.');
+    }
+    if (Stringz::isNullorEmpty($NaverCMS->bankName)) {
+      throw new BarocertException('은행명이 입력되지 않았습니다.');
+    }
+    if (Stringz::isNullorEmpty($NaverCMS->bankAccountNum)) {
+      throw new BarocertException('계좌번호가 입력되지 않았습니다.');
+    }
+    if (Stringz::isNullorEmpty($NaverCMS->bankAccountName)) {
+      throw new BarocertException('예금주명이 입력되지 않았습니다.');
+    }
+    if (Stringz::isNullorEmpty($NaverCMS->bankAccountBirthday)) {
+      throw new BarocertException('예금주 생년월일이 입력되지 않았습니다.');
+    }
+
+    $postdata = json_encode($NaverCMS);
+    
+    $result = parent::executeCURL('/NAVER/CMS/' . $ClientCode, true, $postdata);
+
+    $NaverCMSReceipt = new NaverCMSReceipt();
+    $NaverCMSReceipt->fromJsonInfo($result);
+    return $NaverCMSReceipt;
+  }
+
+  /**
+   * 출금동의 상태확인
+   */
+  public function getCMSStatus($ClientCode, $ReceiptID)
+  {
+    if (Stringz::isNullorEmpty($ClientCode)) {
+      throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
+    }
+    if (Stringz::isNumber($ClientCode) == 0) {
+      throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
+    }
+    if (strlen($ClientCode) != 12) {
+      throw new BarocertException('이용기관코드는 12자 입니다.');
+    }
+    if (Stringz::isNullorEmpty($ReceiptID)) {
+      throw new BarocertException('접수아이디가 입력되지 않았습니다.');
+    }
+    if (Stringz::isNumber($ReceiptID) == 0) {
+      throw new BarocertException('접수아이디는 숫자만 입력할 수 있습니다.');
+    }
+    if (strlen($ReceiptID) != 32) {
+      throw new BarocertException('접수아이디는 32자 입니다.');
+    }
+
+    $result = parent::executeCURL('/NAVER/CMS/' . $ClientCode .'/'. $ReceiptID, false, null);
+
+    $NaverCMSStatus = new NaverCMSStatus();
+    $NaverCMSStatus->fromJsonInfo($result);
+    return $NaverCMSStatus;
+  }
+
+  /**
+   * 출금동의 검증
+   */
+  public function verifyCMS($ClientCode, $ReceiptID)
+  {
+    if (Stringz::isNullorEmpty($ClientCode)) {
+      throw new BarocertException('이용기관코드가 입력되지 않았습니다.');
+    }
+    if (Stringz::isNumber($ClientCode) == 0) {
+      throw new BarocertException('이용기관코드는 숫자만 입력할 수 있습니다.');
+    }
+    if (strlen($ClientCode) != 12) {
+      throw new BarocertException('이용기관코드는 12자 입니다.');
+    }
+    if (Stringz::isNullorEmpty($ReceiptID)) {
+      throw new BarocertException('접수아이디가 입력되지 않았습니다.');
+    }
+    if (Stringz::isNumber($ReceiptID) == 0) {
+      throw new BarocertException('접수아이디는 숫자만 입력할 수 있습니다.');
+    }
+    if (strlen($ReceiptID) != 32) {
+      throw new BarocertException('접수아이디는 32자 입니다.');
+    }
+
+    $result = parent::executeCURL('/NAVER/CMS/' . $ClientCode .'/'. $ReceiptID, true, null);
+
+    $NaverCMSResult = new NaverCMSResult();
+    $NaverCMSResult->fromJsonInfo($result);
+    return $NaverCMSResult;
+  }
+
   public function isNullorEmptyTokenType($multiSignTokens){
     if($multiSignTokens == null) return true;
     foreach($multiSignTokens as $signTokens){
