@@ -1,7 +1,7 @@
 {
     "name": "linkhub/barocert",
     "description": "Barocert SDK for php7",
-    "version": "1.3.2",
+    "version": "1.4.0",
     "type": "library",
     "keywords": [
         "linkhub",
