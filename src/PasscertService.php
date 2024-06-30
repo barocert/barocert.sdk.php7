@@ -16,6 +16,10 @@ class PasscertService extends BaseService
   public function encrypt($data) {
     return parent::encryptTo($data, 'AES');
   }
+
+  public function sha256_base64url_file($data) {
+    return parent::sha256ToBase64urlFile($data);
+  }
   
   /**
    * 본인인증 요청
