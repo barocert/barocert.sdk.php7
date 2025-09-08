@@ -123,7 +123,7 @@ class NavercertService extends BaseService
       throw new BarocertException('접수아이디는 32자 입니다.');
     }
 
-    $result = parent::executeCURL('/NAVER/Identity/' . $ClientCode .'/'. $ReceiptID, true, null);
+    $result = parent::executeCURL('/NAVER/Identity/Verify/' . $ClientCode .'/'. $ReceiptID, true, null);
 
     $NaverIdentityResult = new NaverIdentityResult();
     $NaverIdentityResult->fromJsonInfo($result);
@@ -237,7 +237,7 @@ class NavercertService extends BaseService
       throw new BarocertException('접수아이디는 32자 입니다.');
     }
     
-    $result = parent::executeCURL('/NAVER/Sign/'. $ClientCode .'/'. $ReceiptID, true, null);
+    $result = parent::executeCURL('/NAVER/Sign/Verify/'. $ClientCode .'/'. $ReceiptID, true, null);
 
     $NaverSignResult = new NaverSignResult();
     $NaverSignResult->fromJsonInfo($result);
@@ -349,7 +349,7 @@ class NavercertService extends BaseService
       throw new BarocertException('접수아이디는 32자 입니다.');
     }
     
-    $result = parent::executeCURL('/NAVER/MultiSign/'. $ClientCode .'/'. $ReceiptID, true, null);
+    $result = parent::executeCURL('/NAVER/MultiSign/Verify/'. $ClientCode .'/'. $ReceiptID, true, null);
 
     $NaverMultiSignResult = new NaverMultiSignResult();
     $NaverMultiSignResult->fromJsonInfo($result);
@@ -468,7 +468,7 @@ class NavercertService extends BaseService
       throw new BarocertException('접수아이디는 32자 입니다.');
     }
 
-    $result = parent::executeCURL('/NAVER/CMS/' . $ClientCode .'/'. $ReceiptID, true, null);
+    $result = parent::executeCURL('/NAVER/CMS/Verify/' . $ClientCode .'/'. $ReceiptID, true, null);
 
     $NaverCMSResult = new NaverCMSResult();
     $NaverCMSResult->fromJsonInfo($result);
