@@ -1,7 +1,7 @@
 {
     "name": "linkhub/barocert",
     "description": "Barocert SDK for php7",
-    "version": "1.7.0",
+    "version": "1.8.0",
     "type": "library",
     "keywords": [
         "linkhub",
@@ -13,14 +13,11 @@
       {
         "name":"Linkhub dev",
         "email":"dev@linkhubcorp.com",
-        "homepage":"https://github.com/barocert/",
         "role":"Developer"
       }
     ],
     "support": {
       "email": "code@linkhubcorp.com",
-      "issues": "https://github.com/barocert/barocert.sdk.php7/issues",
-      "source": "https://github.com/barocert/barocert.sdk.php7"
     },
     "require": {
         "php": ">=7.1.3",
