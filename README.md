@@ -1,8 +1,9 @@
 # barocert.sdk.php7
 ---
-barocert SDK for PHP7   
+barocert SDK for PHP7
 
 KakaoCert
+
 1. 본인인증 API
 2. 전자서명(단건) API
 3. 전자서명(복수) API
@@ -10,12 +11,14 @@ KakaoCert
 5. 간편로그인 API
 
 NaverCert
+
 1. 본인인증 API
 2. 전자서명(단건) API
 3. 전자서명(복수) API
 4. 출금동의 API
 
 TossCert
+
 1. 본인확인 API
 2. 본인인증 API
 3. 전자서명(단건) API
@@ -23,6 +26,7 @@ TossCert
 5. 출금동의 API
 
 PassCert
+
 1. 본인인증 API
 2. 전자서명 API
 3. 출금동의 API
