@@ -9,5 +9,5 @@ pipelines:
             - git config --global user.email "john@linkhubcorp.com"
             - git config --global user.name "JohnJeong123"
             - git remote set-url origin https://x-token-auth:${BITBUCKET_TOKEN}@bitbucket.org/${BITBUCKET_REPO_FULL_NAME}.git
-            - git remote add github https://${GITHUB_TOKENS}@github.com/barocert/barocert.sdk.php7.git
+            - git remote add github https://github.com/barocert/barocert.sdk.php7.git
             - git push --mirror github
