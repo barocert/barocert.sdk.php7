@@ -9,6 +9,6 @@ pipelines:
           clone:
             enabled: false
           script:
-            - git clone --bare git@bitbucket.org:linkhub/barocert.sdk.php7.git
+            - git clone --bare git@bitbucket.org:linkhub-sdk/barocert.sdk.php7.git
             - cd barocert.sdk.php7.git
             - git push --mirror git@github.com:barocert/barocert.sdk.php7.git
