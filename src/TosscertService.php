@@ -126,7 +126,7 @@ class TosscertService extends BaseService
 
 		$result = parent::executeCURL('/TOSS/UserIdentity/Verify/' . $ClientCode . '/' . $ReceiptID, true, null);
 
-		$TossUserIdentityResult = new TossIdentityResult();
+		$TossUserIdentityResult = new TossUserIdentityResult();
 		$TossUserIdentityResult->fromJsonInfo($result);
 		return $TossUserIdentityResult;
 	}
