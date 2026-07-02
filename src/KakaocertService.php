@@ -532,6 +532,7 @@ class KakaoIdentity
 	public $token;
 	public $returnURL;
 	public $appUseYN;
+	public $identifyItems;
 }
 
 class KakaoIdentityReceipt
@@ -630,6 +631,7 @@ class KakaoSign
 	public $tokenType;
 	public $returnURL;
 	public $appUseYN;
+	public $identifyItems;
 }
 
 class KakaoSignReceipt
@@ -729,6 +731,7 @@ class KakaoMultiSign
 	public $tokenType;
 	public $returnURL;
 	public $appUseYN;
+	public $identifyItems;
 }
 
 class KakaoMultiSignTokens
@@ -840,6 +843,7 @@ class KakaoCMS
 	public $bankAccountBirthday;
 	public $bankServiceType;
 	public $appUseYN;
+	public $identifyItems;
 }
 
 class KakaoCMSReceipt
